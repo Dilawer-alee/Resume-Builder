@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <i class="fas fa-file-alt text-2xl text-blue-600 mr-3"></i> -->
+  <title>Resume Generator</title>
+  <link rel="stylesheet" href="images/cv_6130189.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+  <!-- <body class="bg-gradient-to-r from-teal-50 to-blue-100 min-h-screen py-10"> -->
+    <body class="bg-gradient-to-r from-teal-100 to-blue-200 min-h-screen py-10">
+  <div class="container mx-auto p-10 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-6 text-center">Resume Generator</h1>
+     
+
+      <div id="formSection" class="max-w-3xl mx-auto py-10 px-6 bg-gradient-to-r from-blue-50 to-blue-300 rounded-xl shadow-lg space-y-6">
+        <form id="resumeForm" class="space-y-6">
+            <div class="flex flex-col">
+                <label for="name" class="text-lg font-semibold text-gray-800 mb-2">Name</label>
+                <input type="text" id="name" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="email" class="text-lg font-semibold text-gray-800 mb-2">Email</label>
+                <input type="email" id="email" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="phone" class="text-lg font-semibold text-gray-800 mb-2">Phone Number</label>
+                <input type="text" id="phone" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="address" class="text-lg font-semibold text-gray-800 mb-2">Address</label>
+                <input type="text" id="address" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="languages" class="text-lg font-semibold text-gray-800 mb-2">Languages (comma-separated)</label>
+                <input type="text" id="languages" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="profileImage" class="text-lg font-semibold  mb-2">Upload Profile Picture</label>
+                <input type="file" id="profileImage" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition duration-300" accept="image/*" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="education" class="text-lg font-semibold text-gray-800 mb-2">Education</label>
+                <textarea id="education" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" rows="4" required></textarea>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="skills" class="text-lg font-semibold text-gray-800 mb-2">Skills (comma-separated)</label>
+                <input type="text" id="skills" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="workExperience" class="text-lg font-semibold text-gray-800 mb-2">Work Experience (comma-separated)</label>
+                <input type="text" id="workExperience" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="profile" class="text-lg font-semibold text-gray-800 mb-2">Profile</label>
+                <input type="text" id="profile" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="flex flex-col">
+                <label for="references" class="text-lg font-semibold text-gray-800 mb-2">References</label>
+                <input type="text" id="references" class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" required>
+            </div>
+    
+            <div class="text-center mt-6">
+                <button type="submit" id="generateButton" class="w-full sm:w-auto bg-teal-500 text-white px-6 py-3 rounded-full text-xl font-semibold transition duration-300 ease-in-out hover:bg-teal-600">Generate Resume</button>
+            </div>
+        </form>
+    </div>  
+    <div id="resume" class="mt-8 flex flex-col sm:flex-row hidden">
+      <!-- Left Section -->
+      <div class="bg-[#163853] w-full sm:w-1/4 p-10 rounded-2xl shadow-2xl text-white mb-8 sm:mb-0">
+        <div class="text-center mb-8 -ml-[50px]">
+          <img id="display-image" class="w-40 h-40 mx-auto rounded-full border-4 border-white object-cover" alt="Profile Image">
+        </div>
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold mb-2 tracking-wider">CONTACT</h2>
+          <hr class="w-[180px] mb-[10px]">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-envelope mr-2"></i>
+            <p id="display-email"></p>
+          </div>
+          <div class="flex items-center mb-2">
+            <i class="fas fa-phone mr-2"></i>
+            <p id="display-phone"></p>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <p id="display-address"></p>
+          </div>
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-semibold mb-2 tracking-wider">EDUCATION</h3>
+          <hr class="w-[180px] mb-[10px]">
+          <p id="display-education"></p>
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-semibold mb-2 tracking-wider">SKILLS</h3>
+          <hr class="w-[180px] mb-[10px]">
+          <ul id="display-skills" class="list-disc pl-6 space-y-1"></ul>
+        </div>
+        <div class="mb-6">
+          <h3 class="text-2xl font-semibold mb-2 tracking-wider">LANGUAGES</h3>
+          <hr class="w-[180px] mb-[10px]">
+          <ul id="display-languages" class="list-disc pl-6 space-y-1"></ul>
+        </div>
+      </div>
+    
+      <!-- Right Section -->
+      <div class="w-full sm:w-3/4 bg-white rounded-2xl shadow-2xl">
+        <div class="mx-6 sm:ml-[30%] mt-[60px]">
+          <h1 id="display-name" class="text-3xl font-bold text-[#163853]"></h1>
+        </div>
+      
+        <div class="mt-10 sm:mt-[100px] sm:ml-[50px] px-6">
+          <div>
+            <h3 class="text-2xl font-semibold mb-2 tracking-wide text-[#163853]">PROFILE</h3>
+            <hr class="w-full sm:w-[580px] mb-[10px] border-t-2 border-[#163853]">
+            <p id="display-profile" class="space-y-1"></p>
+          </div>
+      
+          <div class="mt-10">
+            <h3 class="text-2xl font-semibold mb-2 tracking-wide text-[#163853]">WORK EXPERIENCE</h3>
+            <hr class="w-full sm:w-[580px] mb-[10px] border-t-2 border-[#163853]">
+            <ul id="display-workExperience" class="list-disc pl-6 space-y-1"></ul>
+          </div>
+      
+          <div class="mt-6">
+            <h3 class="text-2xl font-semibold mb-2 tracking-wide text-[#163853]">REFERENCES</h3>
+            <hr class="w-full sm:w-[580px] mb-[10px] border-t-2 border-[#163853]">
+            <p id="display-references" class="list-disc pl-6 space-y-1"></p>
+          </div>
+      
+          <div class="mt-[130px] text-center">
+            <button id="downloadPDF" class="bg-yellow-500 text-black px-6 py-3 rounded-lg mt-6 transition duration-300 ease-in-out hover:bg-yellow-600 hover:text-white">
+              Download PDF
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
